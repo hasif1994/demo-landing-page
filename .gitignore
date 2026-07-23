@@ -2,3 +2,7 @@
 Thumbs.db
 *.log
 .vscode/
+
+# Client-provided reference files (logos, brand guidelines, design mockups)
+# — internal only, never publish to the public repo
+client-files/

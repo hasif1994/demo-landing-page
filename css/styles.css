@@ -1,5 +1,5 @@
 /* =========================================================
-   NTT DATA — APAC Data Centre Leadership Summit 2026
+   NTT GDC — APAC Data Centre Leadership Summit 2026
    Registration / waitlist landing page
    ========================================================= */
 
@@ -36,6 +36,15 @@
   --radius-lg: 4px;
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Strict brand-guideline mode (toggle) ---------- */
+html.brand-mode {
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-body: Arial, Helvetica, sans-serif;
+  --teal: #00DFED;
+  --green: #00CB5D;
+  --green-dot: #00CB5D;
 }
 
 /* ---------- Reset ---------- */
@@ -181,29 +190,9 @@ h3 { font-family: var(--font-body); font-weight: 600; }
   justify-content: space-between;
   padding-block: 1.1rem;
 }
-.brand { display: flex; align-items: center; gap: 0.6rem; }
-.brand-mark {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 2px solid var(--white);
-  position: relative;
-  flex-shrink: 0;
-}
-.brand-mark::after {
-  content: "";
-  position: absolute;
-  inset: 5px;
-  border-radius: 50%;
-  background: var(--white);
-}
-.brand-name {
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.04em;
-  color: var(--white);
-  white-space: nowrap;
-}
+.brand { display: flex; align-items: center; }
+.brand-logo { height: 28px; width: auto; display: block; }
+.brand-logo-footer { height: 36px; }
 
 .main-nav ul { display: flex; gap: 2rem; }
 .main-nav a:not(.btn) {
@@ -731,7 +720,7 @@ form.is-loading .btn-spinner {
   border: 1px solid var(--gray-200);
   white-space: nowrap;
 }
-.success-pill-dot { width: 8px; height: 8px; border-radius: 50%; background: #0e5c46; display: inline-block; }
+.success-pill-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green-dot, #0e5c46); display: inline-block; }
 .success-pill .label { font-size: 0.8rem; font-weight: 600; color: var(--gray-700); }
 .success-close-wrap { margin-top: 1.5rem; }
 .success-close-btn {
@@ -929,6 +918,36 @@ form.is-loading .btn-spinner {
 .back-to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
 .back-to-top:hover { border-color: var(--gold); color: var(--gold); }
 
+.brand-toggle {
+  position: fixed;
+  left: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid var(--gray-200);
+  border-radius: 999px;
+  padding: 0.65rem 1.1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 12px 28px -12px rgba(0,0,0,0.35);
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease), background-color 0.2s var(--ease);
+}
+.brand-toggle:hover { border-color: var(--gold-dark); color: var(--gold-dark); }
+.brand-toggle[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--white);
+  border-color: var(--navy-border);
+}
+.brand-toggle[aria-pressed="true"]:hover { color: var(--gold); border-color: var(--gold); }
+
+@media (max-width: 640px) {
+  .brand-toggle { padding: 0.6rem 0.85rem; font-size: 0.72rem; }
+}
+
 /* ---------- Reveal-on-scroll ---------- */
 [data-reveal] {
   opacity: 0;
@@ -978,5 +997,5 @@ form.is-loading .btn-spinner {
 
   .header-actions { gap: 0.6rem; }
   .header-actions .btn-sm { padding: 0.55rem 0.85rem; font-size: 0.78rem; }
-  .brand-name { font-size: 0.85rem; }
+  .brand-logo { height: 22px; }
 }

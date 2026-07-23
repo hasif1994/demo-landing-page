@@ -1,6 +1,27 @@
 (() => {
   'use strict';
 
+  /* ---------- Brand-guideline mode toggle ---------- */
+  const brandToggle = document.getElementById('brandToggle');
+  const brandToggleLabel = document.getElementById('brandToggleLabel');
+
+  const applyBrandMode = (on) => {
+    document.documentElement.classList.toggle('brand-mode', on);
+    brandToggle.setAttribute('aria-pressed', String(on));
+    brandToggleLabel.textContent = on ? 'Switch to original' : 'Switch to brand guidelines';
+  };
+
+  if (brandToggle) {
+    const stored = localStorage.getItem('brandMode') === 'true';
+    applyBrandMode(stored);
+
+    brandToggle.addEventListener('click', () => {
+      const next = document.documentElement.classList.contains('brand-mode') ? false : true;
+      applyBrandMode(next);
+      localStorage.setItem('brandMode', String(next));
+    });
+  }
+
   /* ---------- Mobile section-menu dropdown ---------- */
   const navToggle = document.getElementById('navToggle');
   const mainNav = document.getElementById('main-nav');
