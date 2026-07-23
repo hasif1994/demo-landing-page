@@ -22,6 +22,24 @@
     });
   }
 
+  /* ---------- About section: new vs classic design switch ---------- */
+  const aboutNewBtn = document.getElementById('aboutVersionNewBtn');
+  const aboutClassicBtn = document.getElementById('aboutVersionClassicBtn');
+  const aboutNewPanel = document.getElementById('aboutVersionNew');
+  const aboutClassicPanel = document.getElementById('aboutVersionClassic');
+
+  if (aboutNewBtn && aboutClassicBtn) {
+    const showAboutVersion = (version) => {
+      const showNew = version === 'new';
+      aboutNewPanel.hidden = !showNew;
+      aboutClassicPanel.hidden = showNew;
+      aboutNewBtn.classList.toggle('is-active', showNew);
+      aboutClassicBtn.classList.toggle('is-active', !showNew);
+    };
+    aboutNewBtn.addEventListener('click', () => showAboutVersion('new'));
+    aboutClassicBtn.addEventListener('click', () => showAboutVersion('classic'));
+  }
+
   /* ---------- Mobile section-menu dropdown ---------- */
   const navToggle = document.getElementById('navToggle');
   const mainNav = document.getElementById('main-nav');
